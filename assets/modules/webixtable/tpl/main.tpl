@@ -41,8 +41,8 @@
                     { view:"template", type:"header", template:"[+name+]"},
                     { view:"toolbar", id:"mybar", elements:[
                         { view:"button", type:"iconButton", icon:"plus", label:"Добавить", width:110, click:"add_row"}, 
-                        { view:"button", type:"iconButton", icon:"trash",  label:"Удалить", width:110, click:"del_row" }/*,
-                        { view:"button", value:"Обновить", width:100, click:"refresh" }*/]
+                        { view:"button", type:"iconButton", icon:"trash",  label:"Удалить", width:110, click:"del_row" },
+                        { view:"button", id:"refresh", label:"Обновить", width:100, click:"refresh" }]
                     },
                     { view:"datatable",
                         autoheight:true,select:"row",resizeColumn:true,
@@ -89,7 +89,8 @@
             }
         }
         function refresh() {
-            $$("mydatatable").refresh();
+         $$("mydatatable").clearAll();
+	        $$("mydatatable").load($$("mydatatable").config.url);
         }
         function show_alert(text, level) {
             webix.alert(text, level, function(result){});
