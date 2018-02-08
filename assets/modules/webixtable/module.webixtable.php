@@ -9,6 +9,7 @@ $fields = explode(',', str_replace(', ', ',', trim($fields)));
 $fields_names = explode(',', str_replace(', ', ',', trim($fields_names)));
 $fields_for_popup_editor = explode(',', str_replace(', ', ',', trim($fields_for_popup_editor)));
 $tpl = isset($tpl) && file_exists(MODX_BASE_PATH . '/assets/modules/webixtable/tpl/' . trim($tpl) . '.tpl') ? trim($tpl) : 'main';
+$table = isset($table) ? trim($table) : false;
 
 $columns = array();
 foreach ($fields as $k => $field) {
@@ -38,7 +39,8 @@ $plh = array(
 		'idField' => $idField,
 		'display' => $display,
 		'cols' => $cols,
-		'name' => $name
+		'name' => $name,
+		'table' => $table
 );
 
 $tpl = file_get_contents($module_url . 'tpl/' . $tpl . '.tpl');
